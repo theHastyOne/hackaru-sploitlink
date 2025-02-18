@@ -97,7 +97,7 @@ export default {
   </head>
   <body>
     <div class="login-container">
-      <h1>Login</h1>
+      <h1>Login - Hackaru</h1>
       <form id="loginForm">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
