@@ -1,0 +1,4 @@
+name = "starlink-login"
+type = "javascript"
+
+main = "workers.js"
