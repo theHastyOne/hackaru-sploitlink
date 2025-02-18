@@ -1,3 +1,6 @@
 name = "starlink-login"
 compatibility_date = "2025-02-18"
 main = "workers/index.js"
+kv_namespaces = [
+  { binding = "KV", id = "USER_CREDENTIALS" }
+]
