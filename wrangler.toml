@@ -1,4 +1,3 @@
 name = "starlink-login"
-type = "javascript"
-
+compatibility_date = "2025-02-18"
 main = "workers.js"
