@@ -23,32 +23,44 @@ export default {
   };
   
   function getLoginPage() {
-    return `
-    <head>
+    return `<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Hackaru - Login</title>
     <style>
-      /* General Reset */
-      * {
+        /* General Reset */
+        * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-      }
-  
-      /* Background */
-      body {
+        }
+        /* Background */
+        body {
         font-family: 'Inter', sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #2c3e50, #4ca1af);
+        color: #fff;
+        }
+        a {
+        color: #d2d2d2;  /* Default text color */
+        text-decoration: none; /* Removes underline */
+        }
+        /* Hover effect */
+        a:hover {
+        color: #ffffff;  /* Darker shade */
+        text-decoration: underline;
+        }
+        /* Main Content Wrapper */
+        .container {
+        flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        background: linear-gradient(135deg, #2c3e50, #4ca1af);
-        color: #fff;
-      }
-  
-      /* Form Container */
-      .login-container {
+        }
+        /* Form Container */
+        .login-container {
         background: rgba(255, 255, 255, 0.1);
         padding: 2rem;
         border-radius: 12px;
@@ -57,10 +69,10 @@ export default {
         text-align: center;
         width: 100%;
         max-width: 320px;
-      }
-  
-      /* Inputs */
-      input {
+        }
+
+        /* Inputs */
+        input {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -70,14 +82,14 @@ export default {
         background: rgba(255, 255, 255, 0.2);
         color: white;
         outline: none;
-      }
-  
-      input::placeholder {
+        }
+
+        input::placeholder {
         color: rgba(255, 255, 255, 0.7);
-      }
-  
-      /* Button */
-      button {
+        }
+
+        /* Button */
+        button {
         width: 100%;
         padding: 10px;
         margin-top: 10px;
@@ -88,22 +100,69 @@ export default {
         color: white;
         cursor: pointer;
         transition: 0.3s;
-      }
-  
-      button:hover {
+        }
+
+        button:hover {
         background: #357a80;
-      }
+        }
+
+        /* Footer Styles */
+        footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 0.9rem;
+        text-align: center;
+        }
+
+        .footer-left, .footer-center, .footer-right {
+        flex: 1;
+        }
+
+        .footer-left {
+        text-align: left;
+        }
+
+        .footer-center {
+        text-align: center;
+        }
+
+        .footer-right {
+        text-align: right;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 600px) {
+        footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+        }
+        .footer-left, .footer-center, .footer-right {
+        text-align: center;
+        }
+        }
     </style>
-  </head>
-  <body>
-    <div class="login-container">
-      <h1>Login - Hackaru</h1>
-      <form id="loginForm">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    </head>
+    <body>
+        <div class="container">
+            <div class="login-container">
+                <h1>Login - Hackaru</h1>
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <div class="footer-left"><a href="https://github.com/theHastyOne/hackaru-sploitlink">GitHub - theHastyOne</a></div>
+            <div class="footer-center"><a href="https://aaronhasty.com">AaronHasty.com &copy2025</a></div>
+            <div class="footer-right"><a href="https://samcurry.net/hacking-subaru">Hacking Subaru</a></div>
+        </footer>
         <script>
           async function login(event) {
             event.preventDefault();
@@ -137,149 +196,203 @@ export default {
   
   function getAppPage() {
     return `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>App</title>
-      <style>
-        /* General Reset */
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-    
-        /* Background */
-        body {
-          font-family: 'Inter', sans-serif;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          background: linear-gradient(135deg, #2c3e50, #4ca1af);
-          color: #fff;
-          position: relative;
-        }
-    
-        /* Main Content */
-        .app-content {
-          text-align: center;
-          transition: 0.3s;
-        }
-    
-        /* MFA Overlay */
-        .overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex; /* Ensures it appears on load */
-          justify-content: center;
-          align-items: center;
-        }
-    
-        /* MFA Modal */
-        .mfa-modal {
-          background: rgba(255, 255, 255, 0.1);
-          padding: 2rem;
-          border-radius: 12px;
-          backdrop-filter: blur(10px);
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          text-align: center;
-          width: 100%;
-          max-width: 320px;
-        }
-    
-        .mfa-modal input {
-          width: 100%;
-          padding: 10px;
-          margin: 10px 0;
-          border: none;
-          border-radius: 6px;
-          font-size: 1rem;
-          background: rgba(255, 255, 255, 0.2);
-          color: white;
-          outline: none;
-          text-align: center;
-        }
-    
-        .mfa-modal input::placeholder {
-          color: rgba(255, 255, 255, 0.7);
-        }
-    
-        /* Button */
-        button {
-          width: 100%;
-          padding: 10px;
-          margin-top: 10px;
-          border: none;
-          border-radius: 6px;
-          font-size: 1rem;
-          background: #4ca1af;
-          color: white;
-          cursor: pointer;
-          transition: 0.3s;
-        }
-    
-        button:hover {
-          background: #357a80;
-        }
-    
-        /* Hide Modal after Verification */
-        .hidden {
-          display: none !important;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="app-content">
-        <h1>Welcome to the App</h1>
-        <button onclick="triggerConfetti()">Click here for full control</button>
-      </div>
-    
-      <!-- MFA Overlay (Visible on Page Load) -->
-      <div class="overlay" id="mfaOverlay">
-        <div class="mfa-modal">
-          <h2>MFA Required</h2>
-          <p>Enter your verification code:</p>
-          <input type="text" id="mfaCode" placeholder="123456" required>
-          <button onclick="verifyMFA()">Submit</button>
-        </div>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-      <script>
-        function triggerConfetti() {
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { x: 0.5, y: 0.5 }
-          });
-        }
-      </script>
-      <script>
-        window.onload = function() {
-          document.getElementById("mfaOverlay").classList.remove("hidden"); // Ensures the modal is visible
-        };
-    
-        function verifyMFA() {
-          let code = document.getElementById("mfaCode").value;
-          if (code === "YOU WILL NEVER GUESS THIS CAUSE IT WOULD USE A REAL MFA SYSTEM") { // Example: Replace with actual validation logic
-            alert('✅ MFA Verified!');
-            document.getElementById("mfaOverlay").classList.add("hidden"); // Hide modal after verification
-          } else {
-            alert('❌ Invalid Code!');
-          }
-        }
-      </script>
-    </body>
-    </html>
-       
-    `;
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Background */
+    body {
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+      color: #fff;
+      position: relative;
+    }
+    a {
+      color: #d2d2d2;  /* Default text color */
+      text-decoration: none; /* Removes underline */
+    }
+    /* Hover effect */
+    a:hover {
+      color: #ffffff;  /* Darker shade */
+      text-decoration: underline;
+    }
+    /* Main Content */
+    .app-content {
+      flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* MFA Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex; /* Ensures it appears on load */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* MFA Modal */
+    .mfa-modal {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .mfa-modal input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      outline: none;
+      text-align: center;
+    }
+
+    .mfa-modal input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Button */
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #4ca1af;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #357a80;
+    }
+
+    /* Hide Modal after Verification */
+    .hidden {
+      display: none !important;
+    }
+    /* Footer Styles */
+    footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+    flex: 1;
+    }
+
+    .footer-left {
+    text-align: left;
+    }
+
+    .footer-center {
+    text-align: center;
+    }
+
+    .footer-right {
+    text-align: right;
+    }
+
+    /* Responsive Footer */
+    @media (max-width: 600px) {
+    footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    }
+    .footer-left, .footer-center, .footer-right {
+    text-align: center;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="app-content">
+    <h1>Welcome to the App</h1>
+    <button onclick="triggerConfetti()">Click here for full control</button>
+  </div>
+
+  <!-- MFA Overlay (Visible on Page Load) -->
+  <div class="overlay" id="mfaOverlay">
+    <div class="mfa-modal">
+      <h2>MFA Required</h2>
+      <p>Enter your verification code:</p>
+      <input type="text" id="mfaCode" placeholder="123456" required>
+      <button onclick="verifyMFA()">Submit</button>
+    </div>
+  </div>
+    <footer>
+        <div class="footer-left"><a href="https://github.com/theHastyOne/hackaru-sploitlink">GitHub - theHastyOne</a></div>
+        <div class="footer-center"><a href="https://aaronhasty.com">AaronHasty.com &copy2025</a></div>
+        <div class="footer-right"><a href="https://samcurry.net/hacking-subaru">Hacking Subaru</a></div>
+    </footer>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function triggerConfetti() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { x: 0.5, y: 0.5 }
+      });
+    }
+  </script>
+  <script>
+    window.onload = function() {
+      document.getElementById("mfaOverlay").classList.remove("hidden"); // Ensures the modal is visible
+    };
+
+    function verifyMFA() {
+      let code = document.getElementById("mfaCode").value;
+      if (code === "YOU WILL NEVER GUESS THIS CAUSE IT WOULD USE A REAL MFA SYSTEM") { // Example: Replace with actual validation logic
+        alert('✅ MFA Verified!');
+        document.getElementById("mfaOverlay").classList.add("hidden"); // Hide modal after verification
+      } else {
+        alert('❌ Invalid Code!');
+      }
+    }
+  </script>
+</body>
+</html> `;
   }
   
   async function handleLogin(request, env) {
