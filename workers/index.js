@@ -1,10 +1,6 @@
 export default {
     async fetch(request, env) {
       const url = new URL(request.url);
-  
-      if (url.pathname === '*/') {
-        return new Response(getLoginPage(), { headers: { 'Content-Type': 'text/html' } });
-      }
       
       if (url.pathname === '*/login' && request.method === 'POST') {
         return handleLogin(request, env);
@@ -18,6 +14,10 @@ export default {
         return new Response(getAppPage(), { headers: { 'Content-Type': 'text/html' } });
       }
       
+      if (url.pathname === '*') {
+        return new Response(getLoginPage(), { headers: { 'Content-Type': 'text/html' } });
+      }
+
       return new Response('Not Found', { status: 404 });
     },
   };
