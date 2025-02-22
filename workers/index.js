@@ -13,12 +13,9 @@ export default {
       if (url.pathname === '*/app') {
         return new Response(getAppPage(), { headers: { 'Content-Type': 'text/html' } });
       }
-      
-      if (url.pathname === '*') {
-        return new Response(getLoginPage(), { headers: { 'Content-Type': 'text/html' } });
-      }
 
-      return new Response('Not Found', { status: 404 });
+      return new Response(getLoginPage(), { headers: { 'Content-Type': 'text/html' } });
+
     },
   };
   
