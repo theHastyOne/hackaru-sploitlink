@@ -2,17 +2,18 @@ export default {
     async fetch(request, env) {
       const url = new URL(request.url);
       
-      if (url.pathname === '*/login' && request.method === 'POST') {
+      if (url.pathname.endsWith('*/login') && request.method === 'POST') {
         return handleLogin(request, env);
       }
       
-      if (url.pathname === '*/reset-password' && request.method === 'POST') {
+      if (url.pathname.endsWith('*/reset-password') && request.method === 'POST') {
         return handlePasswordReset(request, env);
       }
       
-      if (url.pathname === '*/app') {
+      if (url.pathname.endsWith('*/app')) {
         return new Response(getAppPage(), { headers: { 'Content-Type': 'text/html' } });
       }
+
 
       return new Response(getLoginPage(), { headers: { 'Content-Type': 'text/html' } });
 
