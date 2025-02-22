@@ -4,3 +4,6 @@ main = "workers/index.js"
 kv_namespaces = [
   { binding = "KV", id = "0671c2a78d664270a835a03060ed3b27" }
 ]
+routes = [
+  { pattern = "aaronhasty.com/hackaru", zone_name= "aaronhasty.com"}
+]
