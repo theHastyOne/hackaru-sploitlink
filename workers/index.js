@@ -167,14 +167,14 @@ export default {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const basePath = window.location.origin + window.location.pathname.replace(/\/$/, '');
-            const response = await fetch(\`\${basePath}/login\`, {
+            response = await fetch(\`\${basePath}/login\`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ username, password })
             });
-            const result = await response.json();
+            result = await response.json();
             if (result.success) {
-              window.location.href = '/app';
+              window.location.href = '\`\${basePath}/app\`;
             } else {
               alert('Invalid credentials');
             }
