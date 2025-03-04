@@ -166,7 +166,8 @@ export default {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            const response = await fetch('/login', {
+            const basePath = window.location.origin + window.location.pathname.replace(/\/$/, '');
+            const response = await fetch('${basePath}/login', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ username, password })
@@ -180,7 +181,8 @@ export default {
           }
           document.getElementById('loginForm').addEventListener('submit', login);
           function resetPasswordWithoutLogin(username, newPassword) {
-            fetch('/reset-password', {
+            const basePath = window.location.origin + window.location.pathname.replace(/\/$/, '');
+            fetch('${basePath}/reset-password', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ username, newPassword })
